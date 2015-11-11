@@ -138,4 +138,4 @@ foreach($scoresDesCases as $key=>$caseValue){
     }
 }
 
-echo $key;
+echo  $beastCase;
