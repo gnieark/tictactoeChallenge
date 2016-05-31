@@ -32,8 +32,12 @@ function score_case($map,$me,$him,$case,$depth=0){
     ){
         return 10 - $depth;
     }else{
-      $sc=choose_better_cell($newMap,$him,$me,$depth + 1);
-      return -$sc[1];
+      if($depth == 9){
+	return 0;
+      }else{
+	$sc=choose_better_cell($newMap,$him,$me,$depth + 1);
+	return -$sc[1];
+      }
     }
 }
 function choose_better_cell($map,$me,$him,$depth=0){
@@ -73,4 +77,4 @@ if(!isset($hisSymbol)){
 }
 
 
-echo choose_better_cell($message['board'],$message['you'], $hisSymbol,9 - $freeCells);
+echo '{"play":"'.choose_better_cell($message['board'],$message['you'], $hisSymbol,9 - $freeCells).'"}';
